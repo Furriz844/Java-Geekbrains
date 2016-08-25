@@ -1,4 +1,4 @@
-package dz.dz1.VasilyevDmitriy;
+package ru.geekbrains.java1.dz.dz1.VasilyevDmitriy;
 
 /**
  * Created by VasilyevD on 17.08.2016.
