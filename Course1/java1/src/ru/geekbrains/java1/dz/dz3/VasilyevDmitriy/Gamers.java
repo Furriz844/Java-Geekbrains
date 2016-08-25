@@ -16,30 +16,33 @@ public class Gamers {
 
     public static void aiTurn(char map[][]) {
         int x, y;
-        String predict = predictWin();
-        System.out.println(predict);
+        String predict = predictWin('O');
         //Метод predictWin() возвращает строку вида y_x или NO
         //Если вернул NO, значит выигрышной комбинации нет, ставим свою фишку
         //в любое место, если вернул y_x то получаем y и x обращаясь к символам
         //на 0 и 2 позиции в строке и преобразуем в Int
-        if (predict.equals("NO")){
-            System.out.println("Компьютер думает, куда ему поставить фишку");
-            do { // компьютер пытается случайно выбрать незанятое поле для хода
-                x = rand.nextInt(TicTacToe.SIZE);
-                y = rand.nextInt(TicTacToe.SIZE);
-            } while (!isCellEmpty(x, y));
-        } else {
+        if (!predict.equals("NO")){
             x = Character.getNumericValue(predict.charAt(predict.length()-1));
             y = Character.getNumericValue(predict.charAt(0));
-            System.out.println("Компьютер раскрыл ваш коварный план!");
+            System.out.println("Компьютер оказался хитрее вас!");
+        } else {
+            predict = predictWin('X');
+            if (!predict.equals("NO")){
+                x = Character.getNumericValue(predict.charAt(predict.length()-1));
+                y = Character.getNumericValue(predict.charAt(0));
+                System.out.println("Компьютер раскрыл ваш коварный план!");
+            } else {
+                System.out.println("Компьютер думает, куда ему поставить фишку");
+                do { // компьютер пытается случайно выбрать незанятое поле для хода
+                    x = rand.nextInt(TicTacToe.SIZE);
+                    y = rand.nextInt(TicTacToe.SIZE);
+                } while (!isCellEmpty(x, y));
+            }
         }
         System.out.println("Компьютер ставит фишку в "+(x+1)+" "+(y+1));
-        map[x][y] = 'O'; // как только ячейка
-
-
-
-        // найдена, ставим туда О
+        map[x][y] = 'O';
     }
+
     public static void humanTurn(char map[][]) { // ход человека
         int x, y;
         do {

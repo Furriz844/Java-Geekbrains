@@ -28,7 +28,7 @@ public class TicTacToe {
     }
 
     //Метод, возвращающий координаты для предупреждения победы игрока
-    public static String predictWin() {
+    public static String predictWin(char x) {
         //Поиск по вертикали и горизонтали
         int signV; //коэффициент, показывающий выйгрышную комбинацию игрока по горизонтали
         int signH; //коэффициент, показывающий выйгрышную комбинацию игрока по вертикали
@@ -36,7 +36,6 @@ public class TicTacToe {
         int yW = 0;//Переменная, запомиинающая координату у пустой клетки по горизонтали
         int xWh=0;//Переменная, запомиинающая координату х пустой клетки по вертикали
         int yWh=0;//Переменная, запомиинающая координату у пустой клетки по вертикали
-
 /*        Идем по строке и столбцу. Если встречаем Х то коэффициент увеличиваем на 1
         Если О - уменьшаем. Если встречаем *(пустая клетка) то запоминаем координаты
          Если коэффицикет равен 2, то в данной строке/столбце есть выигрышная комбинация
@@ -46,21 +45,20 @@ public class TicTacToe {
             signV=0;
             signH=0;
             for (int j = 0; j < SIZE; j++) {
-
-                if (map[i][j] == 'X') {
+                if (map[i][j] == x) {
                     signV++;
                 }
-                if (map[i][j] == 'O') {
+                if ((map[i][j] != x)&&(map[i][j] != '*')) {
                     signV--;
                 }
                 if (map[i][j] == '*') {
                     xW=j;
                     yW=i;
                 }
-                if (map[j][i] == 'X') {
+                if (map[j][i] == x) {
                     signH++;
                 }
-                if (map[j][i] == 'O') {
+                if ((map[j][i] != x)&& (map[j][i] != '*')) {
                     signH--;
                 }
                 if (map[j][i] == '*') {
@@ -83,20 +81,20 @@ public class TicTacToe {
 
         //Аналогичен поиск по диагоналям
         for (int i=0; i<SIZE;i++) {
-            if (map[i][i] == 'X') {
+            if (map[i][i] == x) {
                 signV++;
             }
-            if (map[i][i] == 'O') {
+            if ((map[i][i] != x)&&(map[i][i] != '*')) {
                 signV--;
             }
             if (map[i][i] == '*') {
                 xW = i;
                 yW = i;
             }
-            if (map[SIZE-1-i][i] == 'X') {
+            if (map[SIZE-1-i][i] == x) {
                 signH++;
             }
-            if (map[SIZE-1-i][i] == 'O') {
+            if ((map[SIZE-1-i][i] != x)&&(map[SIZE-1-i][i] != '*')) {
                 signH--;
             }
             if (map[SIZE-1-i][i] == '*') {
@@ -109,6 +107,7 @@ public class TicTacToe {
 
         return "NO"; //Если комбинаций нет, то возвращаем NO
     }
+
     public static boolean checkWin(char ox) { // Проверяем победу
 
         boolean flagH;
@@ -137,7 +136,7 @@ public class TicTacToe {
         return false;        // если ни одной линии не нашли, значит игрок еще не победил
     }
 
-    //Классы, которые были изначально
+    //Методы, которые были изначально
 
     public static void printMap() { // выводим игровое поле в консоль
         System.out.println(printFirstString(SIZE)); // первая строка с координатами
