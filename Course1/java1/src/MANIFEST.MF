@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: ru.geekbrains.java1.dz.dz3.VasilyevDmitriy.Main
