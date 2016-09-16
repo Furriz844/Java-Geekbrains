@@ -22,8 +22,8 @@ public class MyWindow extends JFrame {
         add(jpMap, BorderLayout.CENTER);
 
 
-        JButton jbStart = new JButton("Start New Game");
-        JButton jbExit = new JButton("Exit Game");
+        JButton jbStart = new JButton("Начать новую игру");
+        JButton jbExit = new JButton("Выход");
         jLabel = new JLabel("New Game");
         jpBottom.add(jbStart);
         jpBottom.add(jbExit);

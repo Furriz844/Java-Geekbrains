@@ -27,14 +27,15 @@ public class Game {
             MyWindow.setLabel("Победил игрок");
             isGameContinue=false;
         }
-        if(!isMapFull(map.getMap())){
+        if(!isMapFull(map.getMap())&&isGameContinue){
             Gamers.aiTurn(map.getMap()); // ход компьютера
             printMap(); // печать поля
             if (checkWin(map.getMap(),'O')) { // проверка победы компьютера
                 MyWindow.setLabel("Победил компьютер");
                 isGameContinue=false;
             }
-        } else {
+        }
+        if(isMapFull(map.getMap())) {
             MyWindow.setLabel("Ничья!");
             isGameContinue=false;
         }
