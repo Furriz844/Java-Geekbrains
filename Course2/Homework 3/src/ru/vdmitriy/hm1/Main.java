@@ -1,5 +1,7 @@
 package ru.vdmitriy.hm1;
 
+import javax.swing.*;
+import java.text.Normalizer;
 import java.util.*;
 
 /**
@@ -22,6 +24,9 @@ public class Main {
                 "makes us stronger";
         System.out.println(howManyWords(Song));
         System.out.println(wordsWhichMadeString(Song));
+        JFrame frame = new JFrame();
+        frame.setContentPane(panel);
+        frame.setVisible(true);
     }
     public static HashMap<String, Integer> howManyWords(String s){
         String[] words = s.split(" ");
